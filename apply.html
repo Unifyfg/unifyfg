@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Apply for business funding with UNIFY. Share your business details, revenue profile, and funding goals through a simple three-step application." />
+  <meta name="theme-color" content="#FFFFFF" />
+  <meta name="color-scheme" content="light" />
+  <title>UNIFY Application</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #FFFFFF;
+      --surface: #F7F9FC;
+      --surface2: #FFFFFF;
+      --navy: #17325F;
+      --navy-mid: #2C4F8F;
+      --gold: #B8801F;
+      --gold-light: #D39F4C;
+      --text: #10203B;
+      --muted: #5E6980;
+      --border: rgba(23,50,95,0.1);
+      --shadow: 0 24px 60px rgba(23,50,95,0.08);
+      --nav-bg: rgba(255,255,255,0.9);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(211,159,76,0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(23,50,95,0.08), transparent 32%),
+        var(--bg);
+      line-height: 1.5;
+    }
+    a { color: inherit; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      height: 88px;
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--nav-bg);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(184,128,31,0.08);
+    }
+    .nav-logo {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      width: 250px;
+      height: 84px;
+      object-fit: contain;
+      display: block;
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .btn-primary,
+    .btn-ghost,
+    .step-button {
+      appearance: none;
+      border: none;
+      border-radius: 12px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0.85rem 1.25rem;
+    }
+    .btn-primary,
+    .step-button.primary {
+      background: linear-gradient(135deg, var(--gold), #C99535);
+      color: #14181F;
+      box-shadow: 0 16px 28px rgba(184,128,31,0.18);
+    }
+    .btn-primary:hover,
+    .step-button.primary:hover,
+    .btn-ghost:hover,
+    .step-button.ghost:hover {
+      transform: translateY(-1px);
+    }
+    .btn-ghost,
+    .step-button.ghost {
+      background: rgba(255,255,255,0.88);
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    main {
+      padding: clamp(3rem, 7vw, 5rem) clamp(1.5rem, 5vw, 4rem) 5rem;
+    }
+    .page-shell {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.95fr 1.15fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    .intro-card,
+    .form-card {
+      background: rgba(255,255,255,0.86);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+    .intro-card {
+      padding: clamp(2rem, 4vw, 3rem);
+      position: sticky;
+      top: 118px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--gold-light);
+      box-shadow: 0 0 0 6px rgba(211,159,76,0.14);
+    }
+    h1, h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.03;
+    }
+    h1 {
+      font-size: clamp(3rem, 5vw, 4.8rem);
+      margin-bottom: 1rem;
+    }
+    h2 {
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      margin-bottom: 0.9rem;
+    }
+    .intro-copy,
+    .muted {
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.8;
+    }
+    .intro-points {
+      margin-top: 2rem;
+      display: grid;
+      gap: 1rem;
+    }
+    .intro-point {
+      padding: 1rem 1.1rem;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--surface);
+    }
+    .intro-point strong {
+      display: block;
+      color: var(--text);
+      font-size: 0.94rem;
+      margin-bottom: 0.3rem;
+    }
+    .intro-point span {
+      color: var(--muted);
+      font-size: 0.84rem;
+      line-height: 1.6;
+    }
+
+    .form-card {
+      padding: clamp(1.6rem, 3vw, 2rem);
+    }
+    .stepper {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.85rem;
+      margin-bottom: 1.6rem;
+    }
+    .step-pill {
+      padding: 0.95rem 1rem;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      min-height: 92px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+    }
+    .step-pill.active {
+      border-color: rgba(184,128,31,0.28);
+      background: rgba(211,159,76,0.09);
+      transform: translateY(-1px);
+    }
+    .step-pill.done {
+      border-color: rgba(23,50,95,0.18);
+      background: rgba(23,50,95,0.04);
+    }
+    .step-index {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .step-title {
+      font-size: 0.86rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .step-sub {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.35rem;
+    }
+
+    .form-shell {
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: var(--surface2);
+      overflow: hidden;
+    }
+    .form-head {
+      padding: 1.35rem 1.45rem;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(247,249,252,0.96), rgba(255,255,255,0.96));
+    }
+    .form-head h2 {
+      font-size: 1.9rem;
+      margin-bottom: 0.35rem;
+    }
+    .form-step {
+      display: none;
+      padding: 1.4rem;
+    }
+    .form-step.active {
+      display: block;
+    }
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    .field-grid.single {
+      grid-template-columns: 1fr;
+    }
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .field label {
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      border: 1px solid rgba(23,50,95,0.14);
+      border-radius: 14px;
+      background: #FFFFFF;
+      color: var(--text);
+      font: inherit;
+      padding: 0.95rem 1rem;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .field textarea {
+      min-height: 132px;
+      resize: vertical;
+    }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: rgba(184,128,31,0.46);
+      box-shadow: 0 0 0 4px rgba(211,159,76,0.12);
+    }
+    .form-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.2rem 1.4rem 1.4rem;
+      border-top: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(247,249,252,0.98));
+    }
+    .actions-left,
+    .actions-right {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .helper-text {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+    .fine-print {
+      margin-top: 1rem;
+      color: rgba(94,105,128,0.86);
+      font-size: 0.78rem;
+      line-height: 1.7;
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 980px) {
+      .page-shell {
+        grid-template-columns: 1fr;
+      }
+      .intro-card {
+        position: static;
+      }
+    }
+    @media (max-width: 720px) {
+      nav {
+        height: auto;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        flex-direction: column;
+        gap: 0.9rem;
+      }
+      .nav-actions {
+        width: 100%;
+      }
+      .nav-actions a {
+        width: 100%;
+      }
+      .nav-logo img {
+        width: 214px;
+        height: 72px;
+      }
+      .field-grid,
+      .stepper {
+        grid-template-columns: 1fr;
+      }
+      .form-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .actions-left,
+      .actions-right {
+        width: 100%;
+        justify-content: stretch;
+      }
+      .actions-right .step-button,
+      .actions-left .step-button {
+        flex: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav aria-label="Application navigation">
+    <a class="nav-logo" href="/#top" aria-label="Back to UNIFY home">
+      <img src="unify-logo-wide.png" alt="UNIFY logo" />
+    </a>
+    <div class="nav-actions">
+      <a class="btn-ghost" href="/#top">Back to home</a>
+      <a class="btn-primary" href="#application">Start application</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-shell">
+      <aside class="intro-card">
+        <span class="eyebrow">UNIFY application</span>
+        <h1>Apply for funding in a few simple steps.</h1>
+        <p class="intro-copy">This follows the lender-style workflow more closely: basic contact details first, business profile second, and funding needs last. Clean, direct, and easy to review.</p>
+
+        <div class="intro-points">
+          <div class="intro-point">
+            <strong>Step 1: Contact information</strong>
+            <span>Tell us who should be contacted about the application.</span>
+          </div>
+          <div class="intro-point">
+            <strong>Step 2: Business details</strong>
+            <span>Share revenue range, industry, and time in business so the file can be reviewed properly.</span>
+          </div>
+          <div class="intro-point">
+            <strong>Step 3: Funding goals</strong>
+            <span>Outline how much capital is needed and what the business plans to do with it.</span>
+          </div>
+        </div>
+
+        <p class="fine-print">This form is structured for static-site deployment. If you publish on Netlify, submissions can be captured there through the built-in form handling on deploy.</p>
+      </aside>
+
+      <section class="form-card" id="application" aria-labelledby="application-title">
+        <div class="stepper" aria-label="Application progress">
+          <div class="step-pill active" data-step-pill="0">
+            <span class="step-index">01</span>
+            <div>
+              <div class="step-title">Contact</div>
+              <div class="step-sub">Who should we reach out to?</div>
+            </div>
+          </div>
+          <div class="step-pill" data-step-pill="1">
+            <span class="step-index">02</span>
+            <div>
+              <div class="step-title">Business</div>
+              <div class="step-sub">Tell us about the company.</div>
+            </div>
+          </div>
+          <div class="step-pill" data-step-pill="2">
+            <span class="step-index">03</span>
+            <div>
+              <div class="step-title">Funding</div>
+              <div class="step-sub">What does the business need?</div>
+            </div>
+          </div>
+        </div>
+
+        <form class="form-shell" name="application" method="POST" data-netlify="true" netlify-honeypot="company-website" action="/thank-you">
+          <input type="hidden" name="form-name" value="application" />
+          <input type="hidden" name="subject" data-remove-prefix value="New UNIFY application (%{submissionId})" />
+          <p class="sr-only">
+            <label>Leave this field empty <input name="company-website" /></label>
+          </p>
+
+          <div class="form-head">
+            <h2 id="application-title">Business funding application</h2>
+            <p class="muted">Takes about five minutes. Start with the basics and move through each step.</p>
+          </div>
+
+          <div class="form-step active" data-step="0">
+            <div class="field-grid">
+              <div class="field">
+                <label for="first-name">First name</label>
+                <input id="first-name" name="first_name" type="text" required />
+              </div>
+              <div class="field">
+                <label for="last-name">Last name</label>
+                <input id="last-name" name="last_name" type="text" required />
+              </div>
+              <div class="field">
+                <label for="business-email">Business email</label>
+                <input id="business-email" name="email" type="email" required />
+              </div>
+              <div class="field">
+                <label for="phone-number">Phone number</label>
+                <input id="phone-number" name="phone_number" type="tel" required />
+              </div>
+              <div class="field">
+                <label for="role">Your role</label>
+                <select id="role" name="role" required>
+                  <option value="">Select one...</option>
+                  <option>Owner</option>
+                  <option>Co-Owner / Partner</option>
+                  <option>CEO / President</option>
+                  <option>CFO / Finance Manager</option>
+                  <option>Operations Lead</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-step" data-step="1">
+            <div class="field-grid">
+              <div class="field">
+                <label for="business-name">Business name</label>
+                <input id="business-name" name="business_name" type="text" required />
+              </div>
+              <div class="field">
+                <label for="business-type">Business type</label>
+                <select id="business-type" name="business_type" required>
+                  <option value="">Select one...</option>
+                  <option>LLC</option>
+                  <option>Corporation</option>
+                  <option>Sole Proprietorship</option>
+                  <option>Partnership</option>
+                  <option>Non-Profit</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="industry">Industry</label>
+                <select id="industry" name="industry" required>
+                  <option value="">Select one...</option>
+                  <option>Restaurant / Food Service</option>
+                  <option>Retail / E-commerce</option>
+                  <option>Auto Repair / Dealership</option>
+                  <option>Healthcare / Medical</option>
+                  <option>Construction / Contractors</option>
+                  <option>Professional Services</option>
+                  <option>Trucking / Transportation</option>
+                  <option>Manufacturing</option>
+                  <option>Hospitality / Hotels</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="time-in-business">Time in business</label>
+                <select id="time-in-business" name="time_in_business" required>
+                  <option value="">Select one...</option>
+                  <option>Less than 6 months</option>
+                  <option>6 - 12 months</option>
+                  <option>1 - 2 years</option>
+                  <option>2 - 5 years</option>
+                  <option>5 - 10 years</option>
+                  <option>10+ years</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="monthly-revenue">Monthly revenue</label>
+                <select id="monthly-revenue" name="monthly_revenue" required>
+                  <option value="">Select one...</option>
+                  <option>Under $10,000</option>
+                  <option>$10,000 - $25,000</option>
+                  <option>$25,000 - $50,000</option>
+                  <option>$50,000 - $100,000</option>
+                  <option>$100,000 - $250,000</option>
+                  <option>$250,000+</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-step" data-step="2">
+            <div class="field-grid">
+              <div class="field">
+                <label for="funding-amount">Funding amount</label>
+                <select id="funding-amount" name="funding_amount" required>
+                  <option value="">Select one...</option>
+                  <option>$10,000 - $25,000</option>
+                  <option>$25,000 - $50,000</option>
+                  <option>$50,000 - $100,000</option>
+                  <option>$100,000 - $250,000</option>
+                  <option>$250,000 - $500,000</option>
+                  <option>$500,000+</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="timeline">Preferred timeline</label>
+                <select id="timeline" name="preferred_timeline" required>
+                  <option value="">Select one...</option>
+                  <option>As soon as possible</option>
+                  <option>Within 7 days</option>
+                  <option>Within 2 weeks</option>
+                  <option>Within 30 days</option>
+                  <option>Exploring options</option>
+                </select>
+              </div>
+            </div>
+            <div class="field-grid single" style="margin-top: 1rem;">
+              <div class="field">
+                <label for="use-of-funds">What will the funding be used for?</label>
+                <textarea id="use-of-funds" name="use_of_funds" required placeholder="Inventory, payroll, marketing, cash flow support, expansion, or another business priority."></textarea>
+              </div>
+              <div class="field">
+                <label for="additional-notes">Anything else we should know?</label>
+                <textarea id="additional-notes" name="additional_notes" placeholder="Optional notes about urgency, business seasonality, or the type of structure you are looking for."></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <div class="actions-left">
+              <button type="button" class="step-button ghost" data-action="back" hidden>Back</button>
+            </div>
+            <div class="actions-right">
+              <span class="helper-text">No obligation. Simple first step.</span>
+              <button type="button" class="step-button primary" data-action="next">Continue</button>
+              <button type="submit" class="step-button primary" data-action="submit" hidden>Submit application</button>
+            </div>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const form = document.querySelector('form[name="application"]');
+    const steps = Array.from(document.querySelectorAll('.form-step'));
+    const pills = Array.from(document.querySelectorAll('[data-step-pill]'));
+    const backButton = document.querySelector('[data-action="back"]');
+    const nextButton = document.querySelector('[data-action="next"]');
+    const submitButton = document.querySelector('[data-action="submit"]');
+    let currentStep = 0;
+
+    function syncSteps() {
+      steps.forEach((step, index) => {
+        step.classList.toggle('active', index === currentStep);
+      });
+
+      pills.forEach((pill, index) => {
+        pill.classList.toggle('active', index === currentStep);
+        pill.classList.toggle('done', index < currentStep);
+      });
+
+      backButton.hidden = currentStep === 0;
+      nextButton.hidden = currentStep === steps.length - 1;
+      submitButton.hidden = currentStep !== steps.length - 1;
+    }
+
+    function validateStep(index) {
+      const fields = Array.from(steps[index].querySelectorAll('input, select, textarea'));
+      const requiredFields = fields.filter((field) => field.hasAttribute('required'));
+      for (const field of requiredFields) {
+        if (!field.reportValidity()) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    nextButton.addEventListener('click', () => {
+      if (!validateStep(currentStep)) return;
+      currentStep = Math.min(currentStep + 1, steps.length - 1);
+      syncSteps();
+    });
+
+    backButton.addEventListener('click', () => {
+      currentStep = Math.max(currentStep - 1, 0);
+      syncSteps();
+    });
+
+    form.addEventListener('submit', (event) => {
+      if (!validateStep(currentStep)) {
+        event.preventDefault();
+      }
+    });
+
+    syncSteps();
+  </script>
+</body>
+</html>

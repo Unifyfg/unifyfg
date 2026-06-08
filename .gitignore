@@ -1,0 +1,15 @@
+node_modules/
+.vercel/
+.DS_Store
+demo-output/
+site/
+*.log
+mma_stats_model/
+record-demo.mjs
+package.json
+package-lock.json
+UNIFY_LOGO.pdf
+UNIFY_LOGO.pdf.png
+document_pdf.pdf
+document_pdf.pdf.png
+ChatGPT Image Apr 1, 2026, 10_14_33 PM.png
