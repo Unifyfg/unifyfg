@@ -322,6 +322,19 @@
       color: var(--muted);
       font-size: 0.82rem;
     }
+    .legal-consent {
+      margin: 0;
+      padding: 0 1.4rem 1.2rem;
+      color: var(--muted);
+      font-size: 0.76rem;
+      line-height: 1.65;
+      text-align: right;
+      background: rgba(247,249,252,0.98);
+    }
+    .legal-consent a {
+      color: var(--navy-mid);
+      text-underline-offset: 3px;
+    }
     .fine-print {
       margin-top: 1rem;
       color: rgba(94,105,128,0.86);
@@ -383,6 +396,7 @@
       .actions-left .step-button {
         flex: 1;
       }
+      .legal-consent { text-align: left; }
     }
   </style>
 </head>
@@ -601,6 +615,7 @@
               <button type="submit" class="step-button primary" data-action="submit" hidden>Submit application</button>
             </div>
           </div>
+          <p class="legal-consent">By submitting this application, you confirm that the information provided is accurate and acknowledge the <a href="/terms">Terms of Service</a> and <a href="/privacy">Privacy Policy</a>.</p>
         </form>
       </section>
     </div>
